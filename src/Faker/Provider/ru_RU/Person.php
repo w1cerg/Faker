@@ -180,11 +180,17 @@ class Person extends \Faker\Provider\Person
         )));
     }
 
+    /**
+     * @example 'Смирнов'
+     */
     public static function lastNameMale()
     {
         return static::randomElement(static::$lastName);
     }
 
+    /**
+     * @example 'Смирнова'
+     */
     public static function lastNameFemale()
     {
         return static::randomElement(static::$lastName).'а';
