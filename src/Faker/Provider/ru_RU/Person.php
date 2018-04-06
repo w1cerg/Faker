@@ -18,6 +18,11 @@ class Person extends \Faker\Provider\Person
         '{{lastName}}а {{firstNameFemale}} {{middleNameFemale}}',
     );
 
+    protected static $lastNameFormat = array(
+      '{{lastName}}',
+      '{{lastName}}а',
+    );
+
     /**
      * {@link} http://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B5_%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B8%D0%BC%D1%8F
      * {@link} http://masterrussian.com/aa031701a.shtml
@@ -153,5 +158,35 @@ class Person extends \Faker\Provider\Person
             static::GENDER_MALE,
             static::GENDER_FEMALE,
         )));
+    }
+
+    /**
+     * Return last name for specified gender
+     * 
+     * @param string|null $gender 'male', 'female' or null for any
+     * @return string
+     */
+    public function lastName($gender = null)
+    {
+        if ($gender === static::GENDER_MALE) {
+            return static::lastNameMale();
+        } elseif ($gender === static::GENDER_FEMALE) {
+            return static::lastNameFemale();
+        }
+
+        return $this->lastName(static::randomElement(array(
+            static::GENDER_MALE,
+            static::GENDER_FEMALE,
+        )));
+    }
+
+    public static function lastNameMale()
+    {
+        return static::randomElement(static::$lastName);
+    }
+
+    public static function lastNameFemale()
+    {
+        return static::randomElement(static::$lastName).'а';
     }
 }
