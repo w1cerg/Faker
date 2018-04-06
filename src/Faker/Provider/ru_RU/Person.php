@@ -18,11 +18,6 @@ class Person extends \Faker\Provider\Person
         '{{lastName}}а {{firstNameFemale}} {{middleNameFemale}}',
     );
 
-    protected static $lastNameFormat = array(
-      '{{lastName}}',
-      '{{lastName}}а',
-    );
-
     /**
      * {@link} http://ru.wikipedia.org/wiki/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B5_%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B8%D0%BC%D1%8F
      * {@link} http://masterrussian.com/aa031701a.shtml
